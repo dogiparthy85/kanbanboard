@@ -10,8 +10,9 @@ $view .= '<div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>';
 $view .= '</div>';
+$attributenew = array('id' => 'newtaskform');
 $view .= '<div class="box-body">';
-$view .= form_open('index.php/home/submitTask');
+$view .= form_open('index.php/home/submitTask', $attributenew);
 
 $view .= '<div class="form-group row">
                         <label for="name" class="col-12 col-sm-2 col-form-label text-sm-right">';
@@ -25,7 +26,7 @@ $view .= '</div>';
 
 $view .= '<div>
             <p class="text-right">
-                <button type="submit" class="btn btn-space btn-primary">Submit</button>
+                <button type="button" id="newtask" onclick="addTask();" class="btn btn-space btn-primary">Submit</button>
                 <button  type="button" onclick="location.href=\'index\';"  class="btn btn-space btn-secondary">Cancel</button>
             </p>
         </div>';
@@ -114,6 +115,35 @@ function taskupdate(elem){
       $("#backwardtask").show();
     }
 }
+function addTask(){
+  var values = {};
+    $.each($('#newtaskform').serializeArray(), function (i, field) {
+        values[field.name] = field.value;
+    });
+      $.ajax({
+            type: 'POST',
+            data: {
+              name : values['name'],
+              type : 'Backlog',
+            },
+            async: false,
+            url: 'submitTask',
+            success: function(response) {
+              alert("Task successfully added");
+              $.ajax({
+                    type: 'POST',
+                    async: false,
+                    url: 'getTaskList',
+                    success: function(response) {
+                      $("#kanban").empty();
+                      $("#kanban").append(response);
+                      $("#name").val('');
+                      $("#addnewtask").addClass("collapsed-box");
+                    }
+              });
+            }
+      });
+}
 function removeTask(){
   var values = {};
     $.each($('#updatetaskform').serializeArray(), function (i, field) {
@@ -142,6 +172,7 @@ function removeTask(){
                       $("#task_type").val('');
                       $("#forwardtask").show();
                       $("#backwardtask").show();
+                      $("#updatetask").addClass("collapsed-box");
                     }
               });
             }
@@ -176,6 +207,7 @@ function moveForwardTask(){
                       $("#task_type").val('');
                       $("#forwardtask").show();
                       $("#backwardtask").show();
+                      $("#updatetask").addClass("collapsed-box");
                     }
               });
             }
@@ -208,6 +240,7 @@ function moveBackwardTask(){
                       $("#task_type").val('');
                       $("#forwardtask").show();
                       $("#backwardtask").show();
+                      $("#updatetask").addClass("collapsed-box");
                     }
               });
             }

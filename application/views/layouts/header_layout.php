@@ -38,16 +38,16 @@ $logopath = base_url() . 'assets/dist/img/SystemLogo.png';
 $logoFile = APPPATH . '../assets/dist/img/SystemLogo.png';
 if (!file_exists($logoFile)) {
 	?>
-  <span class="logo-mini"><b><?php echo $this->config->item('system_name'); ?>Kanban Board</b></span>
+  <span class="logo-mini"><b><?php echo $this->config->item('system_name'); ?></b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b><?php echo $this->config->item('system_name'); ?>Kanban Board</b></span>
+      <span class="logo-lg"><b><?php echo $this->config->item('system_name'); ?></b></span>
 
   <?php
 } else {
 	?>
-    <span class="logo-mini"><b><img src="<?php echo $logopath; ?>">Kanban Board</b></span>
+    <span class="logo-mini"><b><img src="<?php echo $logopath; ?>"></b></span>
       <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b><img src="<?php echo $logopath; ?>">Kanban Board</b></span>
+    <span class="logo-lg"><b><img src="<?php echo $logopath; ?>"></b></span>
   <?php }?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
@@ -81,7 +81,7 @@ if (!file_exists($logoFile)) {
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?php echo $userLink; ?>" class="btn btn-default btn-flat">Profile</a>
+
                 </div>
                 <div class="pull-right">
                   <a href="<?php echo $logoutLink; ?>" class="btn btn-default btn-flat">Sign out</a>

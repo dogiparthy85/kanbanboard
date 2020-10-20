@@ -11,6 +11,7 @@ class Home extends CI_Controller {
 		$this->config->set_item('system_name', 'Kanbanview');
 		$this->config->set_item('system_footer', '');
 		$this->template->set('sub_title', '');
+		$this->load->helper('sendemail_helper');
 	}
 	public function index() {
 		header("Access-Control-Allow-Origin: *");
@@ -97,8 +98,8 @@ class Home extends CI_Controller {
 			$this->template->load('dashboardblock');
 
 		} else {
-			$name = $this->input->post('name');
-			$type = $this->input->post('type');
+			$name = $_REQUEST['name'];
+			$type = $_REQUEST['type'];
 
 			$task_id = create_guid();
 			if (!empty($name)) {
@@ -110,24 +111,22 @@ class Home extends CI_Controller {
 					'deleted' => 0,
 				);
 				$this->task->insertData('tasks', $input);
-				$userSubject = 'New Task - ' . $this->input->post('name') . '  Created';
+				$userSubject = 'New Task - ' . $name . '  Created';
 				$userBody = '<html>
 										<body>
-									<p> New Task ' . $this->input->post('name') . ' is Created</p>
+									<p> New Task ' . $name . ' is Created</p>
 						</body>
 						</html>';
-				//$mailResponse = sendMail($userSubject, $userBody, 'manager@admin.com');
-				/*if ($mailResponse != true || $mailResponse != '1') {
-					print_r($mailResponse);
-					die();
-				} else {
-					print_r("Task Not Created Sucessfully");
-					die();
-				}
-				*/
-
+				/*$mailResponse = sendMail($userSubject, $userBody, 'manager@admin.com');
+					if ($mailResponse != true || $mailResponse != '1') {
+						print_r($mailResponse);
+						die();
+					} else {
+						print_r("Task Not Created Sucessfully");
+						die();
+				}*/
 			}
-			redirect('index.php/home/index');
+			echo 'DONE';
 		}
 	}
 	public function getTaskList() {
