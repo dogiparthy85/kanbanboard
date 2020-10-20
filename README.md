@@ -1,7 +1,7 @@
 # kanban board
 Kanban board in a web application for the development team to manage their development tasks. The kanban board consists of 4 main columns, Backlog, To Do, Ongoing and Done.
 
-This application is built using CodeIgniter Framework. 
+This application is built using CodeIgniter Framework. PHP 7.x is preferred. (version 7.4 is advised.)
 
 Disclaimer: This application is not a complete application and may not be suitable for live environment as it is. 
 Only one single user is added from backend with user id and password as admin. 
