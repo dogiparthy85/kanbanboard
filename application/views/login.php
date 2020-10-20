@@ -39,7 +39,6 @@ $view .= form_open('index.php/home/dologin');
         <button  class="btn btn-lg btn-green btn-block" type="submit">LOGIN</button>
     </div>
 </div> 
-<br>
 
 </fieldset>
             <br>';

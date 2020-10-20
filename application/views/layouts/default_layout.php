@@ -17,18 +17,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <script src="<?php echo base_url(); ?>assets/bower_components/jquery-ui/jquery-ui.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script  src="<?php echo base_url(); ?>assets/dist/js/jquery-menu-editor.js"></script>
-  <script  src="<?php echo base_url(); ?>assets/dist/js/bootstrap-iconpicker.min.js"></script>
-
-
-   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/jqwidgets/jqxcore.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/jqwidgets/jqxsortable.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/jqwidgets/jqxkanban.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/jqwidgets/jqxdata.js"></script>
-
-
-  <!-- Bootstrap 3.3.7 -->
+  <script  src="<?php echo base_url(); ?>assets/dist/js/bootstrap-iconpicker.min.js"></script>  <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bower_components/font-awesome/css/font-awesome.min.css">
@@ -72,7 +61,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/briskcstm.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-iconpicker.min.css">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
 <div class="wrapper skin-blue-light">
 
  <?php require_once 'header_layout.php';?>

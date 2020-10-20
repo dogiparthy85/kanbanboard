@@ -8,7 +8,7 @@ class Home extends CI_Controller {
 		$this->aBreadcrumbMenu['index'] = 'Home';
 		$this->load->model('Login_model', 'login');
 		$this->load->model('Task_model', 'task');
-		$this->config->set_item('system_name', 'Kanban Board');
+		$this->config->set_item('system_name', 'Kanbanview');
 		$this->config->set_item('system_footer', '');
 		$this->template->set('sub_title', '');
 	}
@@ -132,6 +132,130 @@ class Home extends CI_Controller {
 	}
 	public function getTaskList() {
 		$aTaskList = $this->task->getData('tasks', array('deleted' => 0));
-		echo json_encode($aTaskList);
+		$view = '';
+		$aTaskGroup = [];
+		if (!empty($aTaskList)) {
+			foreach ($aTaskList as $key => $aRow) {
+				$aTaskGroup[$aRow['type']][] = $aRow;
+			}
+			if (!empty($aTaskGroup)) {
+				$view .= '<div class="col-md-3"><div class="elementlistbox">';
+				$view .= '<div class="box-header with-border">
+                <h3 class="box-title">Backlog</h3>
+            			</div>';
+				$view .= '<div class="box-body">';
+				$view .= '<ul class="brisklist-unstyled" id="backlog">';
+				$view .= '<li></li>';
+				if (!empty($aTaskGroup['Backlog'])) {
+					foreach ($aTaskGroup['Backlog'] as $aParam) {
+						$view .= '<li id="' . $aParam['id'] . '" datavalue = "' . $aParam['name'] . '" datatype = "' . $aParam['type'] . '" onclick="taskupdate(this);"><a href="#">' . $aParam['name'] . '</a></li>';
+					}
+				}
+				$view .= '</ul>';
+				$view .= '</div>';
+				$view .= '</div>';
+				$view .= '</div>';
+
+				//Start 2nd
+				$view .= '<div class="col-md-3"><div class="elementlistbox">';
+				$view .= '<div class="box-header with-border">
+                <h3 class="box-title">To Do</h3>
+            			</div>';
+				$view .= '<div class="box-body">';
+				$view .= '<ul class="brisklist-unstyled" id="todo">';
+				$view .= '<li></li>';
+				if (!empty($aTaskGroup['To Do'])) {
+					foreach ($aTaskGroup['To Do'] as $aParam) {
+						$view .= '<li id="' . $aParam['id'] . '" datavalue = "' . $aParam['name'] . '" datatype = "' . $aParam['type'] . '" onclick="taskupdate(this);"><a href="#">' . $aParam['name'] . '</a></li>';
+					}
+				}
+				$view .= '</ul>';
+				$view .= '</div>';
+				$view .= '</div>';
+				$view .= '</div>';
+
+				//Start 3rd
+
+				$view .= '<div class="col-md-3"><div class="elementlistbox">';
+				$view .= '<div class="box-header with-border">
+                <h3 class="box-title">Ongoing</h3>
+            			</div>';
+				$view .= '<div class="box-body">';
+				$view .= '<ul class="brisklist-unstyled" id="ongoing">';
+				$view .= '<li></li>';
+				if (!empty($aTaskGroup['Ongoing'])) {
+					foreach ($aTaskGroup['Ongoing'] as $aParam) {
+						$view .= '<li id="' . $aParam['id'] . '" datavalue = "' . $aParam['name'] . '" datatype = "' . $aParam['type'] . '" onclick="taskupdate(this);"><a href="#">' . $aParam['name'] . '</a></li>';
+					}
+				}
+				$view .= '</ul>';
+				$view .= '</div>';
+				$view .= '</div>';
+				$view .= '</div>';
+
+				//Start 4th
+
+				$view .= '<div class="col-md-3"><div class="elementlistbox">';
+				$view .= '<div class="box-header with-border">
+                <h3 class="box-title">Done</h3>
+            			</div>';
+				$view .= '<div class="box-body">';
+				$view .= '<ul class="brisklist-unstyled" id="done">';
+				$view .= '<li></li>';
+				if (!empty($aTaskGroup['Done'])) {
+					foreach ($aTaskGroup['Done'] as $aParam) {
+						$view .= '<li id="' . $aParam['id'] . '" datavalue = "' . $aParam['name'] . '" datatype = "' . $aParam['type'] . '" onclick="taskupdate(this);"><a href="#">' . $aParam['name'] . '</a></li>';
+					}
+				}
+				$view .= '</ul>';
+				$view .= '</div>';
+				$view .= '</div>';
+				$view .= '</div>';
+
+			}
+
+		} else {
+			$view .= '';
+		}
+		echo $view;
+	}
+	function removeTask() {
+		$metaInput = json_decode($_REQUEST['metadata'], true);
+		if (!empty($metaInput['task_id'])) {
+			$input['deleted'] = 1;
+			$where['id'] = $metaInput['task_id'];
+			$this->task->updateData('tasks', $input, $where);
+			echo "DONE";
+		} else {
+			echo "FAIL";
+		}
+	}
+	function moveForwardTask() {
+		$taskIndex = array('Backlog', 'To Do', 'Ongoing', 'Done');
+		$metaInput = json_decode($_REQUEST['metadata'], true);
+		$key = array_search($metaInput['task_type'], $taskIndex);
+		$forwardValue = $key + 1;
+		if (!empty($metaInput['task_id'])) {
+			$input['type'] = $taskIndex[$forwardValue];
+			$where['id'] = $metaInput['task_id'];
+			$this->task->updateData('tasks', $input, $where);
+			echo "DONE";
+		} else {
+			echo "FAIL";
+		}
+	}
+	function moveBackwardTask() {
+		$taskIndex = array('Backlog', 'To Do', 'Ongoing', 'Done');
+		$metaInput = json_decode($_REQUEST['metadata'], true);
+		$key = array_search($metaInput['task_type'], $taskIndex);
+		$backwardValue = $key - 1;
+		if (!empty($metaInput['task_id'])) {
+			$input['type'] = $taskIndex[$backwardValue];
+			$where['id'] = $metaInput['task_id'];
+			$this->task->updateData('tasks', $input, $where);
+			echo "DONE";
+		} else {
+			echo "FAIL";
+		}
 	}
 }

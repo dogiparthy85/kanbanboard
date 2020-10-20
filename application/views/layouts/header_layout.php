@@ -38,14 +38,14 @@ $logopath = base_url() . 'assets/dist/img/SystemLogo.png';
 $logoFile = APPPATH . '../assets/dist/img/SystemLogo.png';
 if (!file_exists($logoFile)) {
 	?>
-  <span class="logo-mini"><b><?php echo $this->config->item('system_name'); ?></b></span>
+  <span class="logo-mini"><b><?php echo $this->config->item('system_name'); ?>Kanban Board</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b><?php echo $this->config->item('system_name'); ?></b></span>
+      <span class="logo-lg"><b><?php echo $this->config->item('system_name'); ?>Kanban Board</b></span>
 
   <?php
 } else {
 	?>
-    <span class="logo-mini"><b><img src="<?php echo $logopath; ?>"></b></span>
+    <span class="logo-mini"><b><img src="<?php echo $logopath; ?>">Kanban Board</b></span>
       <!-- logo for regular state and mobile devices -->
     <span class="logo-lg"><b><img src="<?php echo $logopath; ?>">Kanban Board</b></span>
   <?php }?>
@@ -61,34 +61,6 @@ if (!file_exists($logoFile)) {
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
 
-          <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-<!--
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
--->
-            </a>
-            <ul class="dropdown-menu">
-             <!-- <li class="header">You have 10 notifications</li>-->
-              <!--<li class="footer"><a href="#">View all</a></li>-->
-            </ul>
-          </li>
-          <!-- Tasks: style can be found in dropdown.less -->
-          <li class="dropdown tasks-menu">
-<!--
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
-            </a>
--->
-            <ul class="dropdown-menu">
-             <!-- <li class="header">You have 9 tasks</li>-->
-             <!-- <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>-->
-            </ul>
-          </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
