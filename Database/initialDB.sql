@@ -132,7 +132,7 @@ CREATE TABLE `oauth_users` (
 --
 
 INSERT INTO `oauth_users` (`username`, `password`, `first_name`, `last_name`, `email`, `email_verified`, `scope`) VALUES
-('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Kinjal', 'Shah', 'test@test.com', 1, 'app');
+('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Kanban', 'Admin', 'kanban@mycompany.com', 1, 'app');
 
 -- --------------------------------------------------------
 
