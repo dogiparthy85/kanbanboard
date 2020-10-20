@@ -42,4 +42,8 @@ Given the user clicks on a task in the Backlog (first) column, then the 'Move ba
 
 Add on to this .....
 
-User Management Access Control Reports Dashboard (Role Based) with multiple dashlets showing tabular reports, graphical reports showing important metrics
+User Management,
+Access Control,
+Reports,
+Dashboard (Role Based) with multiple dashlets showing tabular reports, graphical reports showing important metrics
+need to be added.
