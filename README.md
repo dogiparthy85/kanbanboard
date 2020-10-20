@@ -42,3 +42,10 @@ Given the user clicks on a task in the Done (last) column, then the move forward
 Given the task name is shown in a read-only input field and the user clicks on a 'Move backwards' button, then the task will be moved to the previous column.
 
 Given the user clicks on a task in the Backlog (first) column, then the 'Move backwards' button will be disabled.	Yes
+
+Add on to this .....
+
+User Management
+Access Control
+Reports
+Dashboard (Role Based) with multiple dashlets showing tabular reports, graphical reports showing important metrics
