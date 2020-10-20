@@ -1,0 +1,33 @@
+Welcome to Brisk Staff Service Platform
+
+Updated Steps:
+
+*******************************Date 12 Sep,2019***************************
+ 
+--> Run following query in database:::
+
+ALTER TABLE `users` ADD `role_id` CHAR(36) NOT NULL AFTER `database_key`;
+
+*******************************Date 13 Sep,2019***************************
+Resolved Duplicate User Creation issue when updated staff data
+
+
+*******************************Date 6 Apr,2020***************************
+=> ALTER TABLE `assign_skill` ADD `assign_to` CHAR(36) NOT NULL AFTER `due_date`;
+=> ALTER TABLE `skill_staff_rel` ADD `assign_to` CHAR(36) NOT NULL AFTER `skill_id`;
+
+******************** Date 9 Apr,2020 ***************************
+Update data into Database using query
+
+=> UPDATE assign_skill SET assign_to = staff_id;
+=> UPDATE skill_staff_rel SET assign_to = staff_id;
+
+******************** Date 15 Apr,2020 ***************************
+Add Row into Database using query
+
+ALTER TABLE `assign_skill`  ADD `end_date` DATE NULL DEFAULT NULL  AFTER `due_date`,  ADD `status` VARCHAR(100) NOT NULL  AFTER `end_date`;
+
+UPDATE assign_skill SET end_date = due_date;
+
+
+ALTER TABLE `assign_skill` CHANGE `end_date` `end_date` DATE NOT NULL;
