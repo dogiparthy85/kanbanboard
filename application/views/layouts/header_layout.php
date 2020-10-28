@@ -38,16 +38,16 @@ $logopath = base_url() . 'assets/dist/img/SystemLogo.png';
 $logoFile = APPPATH . '../assets/dist/img/SystemLogo.png';
 if (!file_exists($logoFile)) {
 	?>
-  <span class="logo-mini"><b><?php echo $this->config->item('system_name'); ?></b></span>
+  <span class="logo-mini"><b><?php echo $this->config->item('system_name'); ?>Kanban Board</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b><?php echo $this->config->item('system_name'); ?></b></span>
+      <span class="logo-lg"><b><?php echo $this->config->item('system_name'); ?>Kanban Board</b></span>
 
   <?php
 } else {
 	?>
-    <span class="logo-mini"><b><img src="<?php echo $logopath; ?>"></b></span>
+    <span class="logo-mini"><b><img src="<?php echo $logopath; ?>">Kanban Board</b></span>
       <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b><img src="<?php echo $logopath; ?>"></b></span>
+    <span class="logo-lg"><b><img src="<?php echo $logopath; ?>">Kanban Board</b></span>
   <?php }?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
